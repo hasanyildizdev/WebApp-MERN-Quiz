@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 var sec = 0;
 function pad ( val ) { return val > 9 ? val : "0" + val; }
 var timer = setInterval( function(){
@@ -8,7 +7,49 @@ var timer = setInterval( function(){
 }, 1000);
 
 export default class Quiz extends Component {
+    constructor(){
+        super();
+        this.state = { selectedOption: 'null' };       
+    }
+
+    handleClick = (e) => {
+        e.target.style.border="2px solid #00FF00"
+        if(e.target.id==="buttonA"){
+            document.getElementById("buttonB").style.border = "0px";
+            document.getElementById("buttonC").style.border = "0px";
+            document.getElementById("buttonD").style.border = "0px";
+            this.setState({
+                selectedOption:'a'
+            });
+        }
+        else if(e.target.id==="buttonB"){
+            document.getElementById("buttonA").style.border = "0px";
+            document.getElementById("buttonC").style.border = "0px";
+            document.getElementById("buttonD").style.border = "0px";
+            this.setState({
+                selectedOption:'b'
+            });
+        }
+        else if(e.target.id==="buttonC"){
+            document.getElementById("buttonA").style.border = "0px";
+            document.getElementById("buttonB").style.border = "0px";
+            document.getElementById("buttonD").style.border = "0px";
+            this.setState({
+                selectedOption:'c'
+            });
+        }
+        else{
+            document.getElementById("buttonA").style.border = "0px";
+            document.getElementById("buttonB").style.border = "0px";
+            document.getElementById("buttonC").style.border = "0px";
+            this.setState({
+                selectedOption:'d'
+            });
+        }
+    }
+
     render() {        
+
         return (
               <div className="container">
                 <div className="flex w-full justify-end pb-2">
@@ -18,35 +59,47 @@ export default class Quiz extends Component {
                 </div>
                 <div className=" text-white bg-black w-full pt-6 pb-6 px-6 rounded-xl">
                     <div className="flex w-full h-6 item-center justify-end">
-                        (1/10)
+                            (1/10)
                     </div>
                     <div className="flex flex-col w-full h-full items-center justify-center">
-                        <div class="flex flex-row items-center pb-6">
-                            <h3 class="text-danger">Q.</h3>
-                            <h5 class="mt-1 ml-2">Which of the following country has largest population?</h5>
+                        <div className="flex flex-row items-center pb-6">
+                            <h3 className="text-danger">Q.</h3>
+                            <h5 className="mt-1 ml-2">Which of the following country has largest population?</h5>
                         </div>
                         <div className="flex flex-col pb-6">
-                            <button className=" border-2 border-green-600 py-2 px-4 rounded-lg mt-2">
-                                <h5>A) Turkey</h5>
+                            <button 
+                                id="buttonA"
+                                onClick={this.handleClick}
+                                className="py-2 px-4 rounded-lg mt-2 text-xl font-bold flex items-start">
+                                A) Turkey
                             </button>
-                            <button className=" border-2 border-green-600 py-2 px-4 rounded-lg my-2">
-                                <h5>B) Canada</h5>
+                            <button 
+                                id="buttonB"                                
+                                onClick={this.handleClick}
+                                className="py-2 px-4 rounded-lg mt-2 text-xl font-bold  flex items-start">
+                                B) Canada
                             </button>
-                            <button className=" border-2 border-green-600 py-2 px-4 rounded-lg">
-                                <h5>C) Russia</h5>
+                            <button 
+                                id="buttonC"
+                                onClick={this.handleClick}
+                                className="py-2 px-4 rounded-lg mt-2 text-xl font-bold  flex items-start">
+                                C) Russia
                             </button>
-                            <button className=" border-2 border-green-600 py-2 px-4 rounded-lg mt-2">
-                                <h5>D) China</h5>
+                            <button 
+                                id="buttonD"
+                                onClick={this.handleClick}
+                                className="py-2 px-4 rounded-lg mt-2 text-xl font-bold  flex items-start">
+                                D) China
                             </button>
                         </div>
-                        <div class="w-full flex flex-row justify-content-between items-center">
-                            <button class="btn btn-danger align-items-center" type="button">
-                                <i class="fa fa-angle-left mr-2"></i>
+                        <div className="w-full flex flex-row justify-content-between items-center">
+                            <button className="btn btn-danger align-items-center" type="button">
+                                <i className="fa fa-angle-left mr-2"></i>
                                 Previous
                             </button>
-                            <button class="btn btn-success align-items-center " type="button">
+                            <button className="btn btn-success align-items-center " type="button">
                                 Next
-                                <i class="fa fa-angle-right ml-2"></i>
+                                <i className="fa fa-angle-right ml-2"></i>
                             </button>
                         </div>
                     </div>
