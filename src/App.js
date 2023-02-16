@@ -18,10 +18,10 @@ function App() {
         <div className="w-75 mx-auto">
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/quiz" element={<Quiz/>}/>
+            <Route path="/quiz/:username" element={<Quiz/>}/>
             <Route path="/user" element={<CreateUser/>}/>
             <Route path="/add" element={<AddQuestion/>}/>
-            <Route path="/start" element={<StartQuiz/>}/>
+            <Route path="/start/:username" element={<StartQuiz/>}/>
             <Route path="/result" element={<Result/>}/>
           </Routes>
         </div>

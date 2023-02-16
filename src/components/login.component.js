@@ -60,7 +60,7 @@ class Login extends Component{
                         password:''
                     });
 
-                    window.location = '/start';
+                    window.location = '/start/'+ this.state.username;
                 }
                 else{
                     alert('Wrong Username and Password');

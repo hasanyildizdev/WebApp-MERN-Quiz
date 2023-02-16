@@ -29,4 +29,19 @@ router.route('/add').post((req,res)=>{
         .catch(err=>res.status(400).json('Error:'+err));
 });
 
+router.route('/result/:username').post((req,res)=>{
+    User.findOne({username:req.params.username}).
+    then(User=>{
+        User.completed_quiz= req.body.completed_quiz;
+        User.total_skill_point=  Number(req.body.total_skill_point);
+        User.correct_answer_count=  Number(req.body.correct_answer_count);
+        User.wrong_answer_count=  Number(req.body.wrong_answer_count);
+        User.completion_time=  Number(req.body.completion_time);
+
+        User.save()
+            .then(()=> res.json('Quiz Completed!'))
+            .catch(err=>res.status(400).json('Error:'+err));
+    })
+});
+
 module.exports = router;

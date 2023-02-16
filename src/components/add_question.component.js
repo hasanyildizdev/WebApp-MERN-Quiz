@@ -81,8 +81,6 @@ export default class AddQuestion extends Component{
             skill_point: this.state.skill_point,
         }
 
-        console.log(questionItem);
-
         try {
             axios.post('http://192.168.1.124:5000/questions/add',questionItem)
             alert("Added Successfully"); 
