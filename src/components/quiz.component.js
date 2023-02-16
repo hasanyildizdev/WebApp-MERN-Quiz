@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-
 import { useParams } from 'react-router-dom';
 
 export function withRouter(Children) {
@@ -173,7 +172,7 @@ class Quiz extends Component {
         }
 
         axios.post('http://192.168.1.124:5000/users/result/' + this.props.match.params.username, quizResult)
-            .then(window.location = '/result')
+            .then(window.location = '/result/'+this.props.match.params.username)
             .catch((error) => {
                 alert("Something went wrong! Error: " + error);
                 window.location = '/quiz'

@@ -54,13 +54,14 @@ class Login extends Component{
         axios.get('http://192.168.1.124:5000/users/' + this.state.username)
             .then(response => {
                 if(response.data.username===this.state.username && response.data.password===this.state.password){
-                    alert(`Wellcome ${this.state.username}`);
-                    this.setState({
-                        username:'',
-                        password:''
-                    });
-
-                    window.location = '/start/'+ this.state.username;
+                     if(response.data.completed_quiz){
+                        alert('You already solved quiz!');
+                        window.location = '/result/'+ this.state.username;
+                    }
+                    else{
+                        alert(`Wellcome ${this.state.username}`);
+                        window.location = '/start/'+ this.state.username;
+                    } 
                 }
                 else{
                     alert('Wrong Username and Password');

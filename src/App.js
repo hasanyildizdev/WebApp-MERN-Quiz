@@ -22,7 +22,7 @@ function App() {
             <Route path="/user" element={<CreateUser/>}/>
             <Route path="/add" element={<AddQuestion/>}/>
             <Route path="/start/:username" element={<StartQuiz/>}/>
-            <Route path="/result" element={<Result/>}/>
+            <Route path="/result/:username" element={<Result/>}/>
           </Routes>
         </div>
       </div>
