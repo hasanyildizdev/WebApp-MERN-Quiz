@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-var sec = 0;
-function pad ( val ) { return val > 9 ? val : "0" + val; }
-var timer = setInterval( function(){
-    document.getElementById("seconds").innerHTML=pad(++sec%60);
-    document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
-}, 1000);
 
 export default class Quiz extends Component {
     constructor(){
         super();
-        this.state = { selectedOption: 'null' };       
+        this.state = { selectedOption: 'null' };   
+        var sec = 0;
+        function pad ( val ) { return val > 9 ? val : "0" + val; }
+        setInterval( function(){
+            document.getElementById("seconds").innerHTML=pad(++sec%60);
+            document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
+        }, 1000);
     }
 
     handleClick = (e) => {
@@ -92,11 +92,7 @@ export default class Quiz extends Component {
                                 D) China
                             </button>
                         </div>
-                        <div className="w-full flex flex-row justify-content-between items-center">
-                            <button className="btn btn-danger align-items-center" type="button">
-                                <i className="fa fa-angle-left mr-2"></i>
-                                Previous
-                            </button>
+                        <div className="w-full flex justify-end items-center">
                             <button className="btn btn-success align-items-center " type="button">
                                 Next
                                 <i className="fa fa-angle-right ml-2"></i>

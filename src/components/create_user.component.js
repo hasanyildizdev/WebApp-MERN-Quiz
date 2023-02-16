@@ -61,7 +61,7 @@ export default class CreateUsers extends Component{
 
     render(){
         return(
-            <div className="w-50 mx-auto">
+            <div className="w-50 mx-auto mt-24">
                 <h3>Create Account</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">

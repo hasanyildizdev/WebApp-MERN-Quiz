@@ -74,11 +74,11 @@ class Login extends Component{
 
     render(){
         return(
-            <div className="w-50 mx-auto">
+            <div className="w-50 mx-auto mt-24">
                 <h3>Login</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Usaername:</label>
+                        <label>Username:</label>
                         <input
                             type="text"
                             required
@@ -90,7 +90,7 @@ class Login extends Component{
                     <div className="form-group">
                         <label>Password:</label>
                         <input
-                            type="text"
+                            type="password"
                             required
                             className="form-control"
                             value={this.state.password}
