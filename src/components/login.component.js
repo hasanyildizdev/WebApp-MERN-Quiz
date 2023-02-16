@@ -60,7 +60,7 @@ class Login extends Component{
                         password:''
                     });
 
-                    window.location = '/quiz';
+                    window.location = '/start';
                 }
                 else{
                     alert('Wrong Username and Password');

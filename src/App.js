@@ -5,6 +5,8 @@ import Login from "./components/login.component";
 import CreateUser from "./components/create_user.component";
 import Quiz from "./components/quiz.component";
 import AddQuestion from "./components/add_question.component";
+import StartQuiz from "./components/start_quiz.component";
+import Result from "./components/result.component";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/quiz" element={<Quiz/>}/>
             <Route path="/user" element={<CreateUser/>}/>
             <Route path="/add" element={<AddQuestion/>}/>
+            <Route path="/start" element={<StartQuiz/>}/>
+            <Route path="/result" element={<Result/>}/>
           </Routes>
         </div>
       </div>
