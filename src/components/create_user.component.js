@@ -74,7 +74,7 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeUsername}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group pt-2">
                         <label>Password:</label>
                         <input
                             type="text"
@@ -84,7 +84,7 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangePassword}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group pt-2">
                         <label>Birthday: </label>
                         <div>
                             <DatePicker

@@ -1,6 +1,18 @@
 import React, {Component} from "react";
 import axios from 'axios';
 
+const Question = props => (
+    <tr>
+        <td>{props.question.number}</td>
+        <td>{props.question.question}</td>
+        <td>{props.question.option_a}</td>
+        <td>{props.question.option_b}</td>
+        <td>{props.question.option_c}</td>
+        <td>{props.question.option_d}</td>
+        <td>{props.question.correct_answer}</td>
+        <td>{props.question.skill_point}</td>
+    </tr>
+)
 export default class AddQuestion extends Component{
     constructor(props){
         super(props);
@@ -24,7 +36,19 @@ export default class AddQuestion extends Component{
             option_d : '',
             correct_answer : '',
             skill_point: 0,
+            questionsList : []
         }
+    }
+    
+
+    componentDidMount() {
+        axios.get('http://192.168.1.124:5000/questions')
+            .then(response => {
+                this.setState({ questionsList: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     onChangeNumber(e){
@@ -91,97 +115,125 @@ export default class AddQuestion extends Component{
         
     }
 
+    questionList() {
+        return this.state.questionsList.map(current_question => {
+            return <Question question={current_question} key={current_question._id} />;
+        })
+    }
+
     render(){
         return(
-            <div className="w-50 mx-auto">
-                <h3>Add Question</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Number:</label>
-                        <input
-                            type="number"
-                            required
-                            className="form-control"
-                            value={this.state.number}
-                            onChange={this.onChangeNumber}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Question:</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.question}
-                            onChange={this.onChangeQuestion}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>A:</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.option_a}
-                            onChange={this.onChangeA}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>B:</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.option_b}
-                            onChange={this.onChangeB}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>C:</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.option_c}
-                            onChange={this.onChangeC}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>D:</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.option_d}
-                            onChange={this.onChangeD}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Correct Answer:</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.correct_answer}
-                            onChange={this.onChangeCorrectAnswer}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Skill Point:</label>
-                        <input
-                            type="number"
-                            required
-                            className="form-control"
-                            value={this.state.skill_point}
-                            onChange={this.onChangeSkillPoint}
-                        />
-                    </div>
-                    
+            <div>
+                <div className="w-50 mx-auto">
+                    <h3>Add Question</h3>
+                    <form onSubmit={this.onSubmit}>
+                        <div className="form-group">
+                            <label>Number:</label>
+                            <input
+                                type="number"
+                                required
+                                className="form-control"
+                                value={this.state.number}
+                                onChange={this.onChangeNumber}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Question:</label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                value={this.state.question}
+                                onChange={this.onChangeQuestion}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>A:</label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                value={this.state.option_a}
+                                onChange={this.onChangeA}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>B:</label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                value={this.state.option_b}
+                                onChange={this.onChangeB}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>C:</label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                value={this.state.option_c}
+                                onChange={this.onChangeC}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>D:</label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                value={this.state.option_d}
+                                onChange={this.onChangeD}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Correct Answer:</label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                value={this.state.correct_answer}
+                                onChange={this.onChangeCorrectAnswer}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Skill Point:</label>
+                            <input
+                                type="number"
+                                required
+                                className="form-control"
+                                value={this.state.skill_point}
+                                onChange={this.onChangeSkillPoint}
+                            />
+                        </div>
+                        
 
-                    <div className="form-group pt-2">
-                        <input type="submit" value="Add Question" className="btn btn-primary"/>
-                    </div>
-                </form>
+                        <div className="form-group pt-2">
+                            <input type="submit" value="Add Question" className="btn btn-primary"/>
+                        </div>
+                    </form>
+                </div>
+                <div className="mt-10">
+                <h3>Question List</h3>
+                <table className="table">
+                    <thead className="thead-light">
+                        <tr>
+                            <th>Nr</th>
+                            <th>Question</th>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>D</th>
+                            <th>Answer</th>
+                            <th>Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.questionList()}
+                    </tbody>
+                </table>
+                </div>
             </div>
         )
     }   

@@ -11,21 +11,21 @@ import Result from "./components/result.component";
 function App() {
   return (
     <Router>
-      <div className="w-full items-center flex justify-center h-24">
-          <h1 className="text-red-600 font-bold">Quiz App</h1>
-      </div>
-      <div className="container">
-        <div className="w-75 mx-auto">
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/quiz/:username" element={<Quiz/>}/>
-            <Route path="/user" element={<CreateUser/>}/>
-            <Route path="/add" element={<AddQuestion/>}/>
-            <Route path="/start/:username" element={<StartQuiz/>}/>
-            <Route path="/result/:username" element={<Result/>}/>
-          </Routes>
+        <div className="w-full items-center flex justify-center h-24">
+            <h1 className="text-red-600 font-bold">Quiz App</h1>
         </div>
-      </div>
+        <div className="container">
+          <div className="w-75 mx-auto">
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/quiz/:username" element={<Quiz/>}/>
+              <Route path="/user" element={<CreateUser/>}/>
+              <Route path="/add" element={<AddQuestion/>}/>
+              <Route path="/start/:username" element={<StartQuiz/>}/>
+              <Route path="/result/:username" element={<Result/>}/>
+            </Routes>
+          </div>
+        </div>
     </Router>
   );
 }
