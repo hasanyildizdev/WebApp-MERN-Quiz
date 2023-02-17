@@ -42,7 +42,7 @@ export default class AddQuestion extends Component{
     
 
     componentDidMount() {
-        axios.get('http://192.168.1.124:5000/questions')
+        axios.get('http://localhost:5000/questions')
             .then(response => {
                 this.setState({ questionsList: response.data })
             })
@@ -106,7 +106,7 @@ export default class AddQuestion extends Component{
         }
 
         try {
-            axios.post('http://192.168.1.124:5000/questions/add',questionItem)
+            axios.post('http://localhost:5000/questions/add',questionItem)
             alert("Added Successfully"); 
             return window.location = '/add';
         } catch (error) {

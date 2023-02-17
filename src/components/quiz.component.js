@@ -41,7 +41,7 @@ class Quiz extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.1.124:5000/questions')
+        axios.get('http://localhost:5000/questions')
             .then(response => {
                 this.setState({
                     questionsObject: response.data,
@@ -171,7 +171,7 @@ class Quiz extends Component {
             completion_time: this.state.completion_time,
         }
 
-        axios.post('http://192.168.1.124:5000/users/result/' + this.props.match.params.username, quizResult)
+        axios.post('http://localhost:5000/users/result/' + this.props.match.params.username, quizResult)
             .then(window.location = '/result/'+this.props.match.params.username)
             .catch((error) => {
                 alert("Something went wrong! Error: " + error);

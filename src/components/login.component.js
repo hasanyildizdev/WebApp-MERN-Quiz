@@ -28,7 +28,7 @@ class Login extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://192.168.1.124:5000/users')
+        axios.get('http://localhost:5000/users')
             .then(response =>{
                 this.setState({users:response.data})
             })
@@ -51,7 +51,7 @@ class Login extends Component{
     onSubmit(e){
         e.preventDefault();
         
-        axios.get('http://192.168.1.124:5000/users/' + this.state.username)
+        axios.get('http://localhost:5000/users/' + this.state.username)
             .then(response => {
                 if(response.data.username===this.state.username && response.data.password===this.state.password){
                      if(response.data.completed_quiz){

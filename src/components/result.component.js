@@ -27,12 +27,12 @@ class Result extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.1.124:5000/questions')
+    axios.get('http://localhost:5000/questions')
       .then(response => {
         this.questionCount = Object.keys(response.data).length;
       });
 
-    axios.get('http://192.168.1.124:5000/users/' + this.props.match.params.username)
+    axios.get('http://localhost:5000/users/' + this.props.match.params.username)
       .then(response => {
         this.setState({
           username: response.data.username,
